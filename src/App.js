@@ -1,5 +1,12 @@
+import Header from "./Componets/Header/Header";
+import List from "./Componets/List/List";
 function App() {
-  return <div className="App">Hi</div>;
+  return (
+    <>
+      <Header></Header>
+      <List></List>
+    </>
+  );
 }
 
 export default App;

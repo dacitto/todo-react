@@ -1,0 +1,47 @@
+.header {
+  min-height: 18rem;
+  background: url("../../images/bg-desktop-light.jpg");
+  background-position: top;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-color: #222;
+  padding-top: 5rem;
+  font-family: "Josefin Sans", sans-serif;
+  color: var(--DarkGrayishBlue);
+  .todo {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    .todo-text {
+      color: white;
+      text-transform: uppercase;
+      letter-spacing: 1rem;
+    }
+  }
+  .create {
+    width: 100%;
+    background-color: #fff;
+    padding: 1rem;
+    margin-top: 3rem;
+    border-radius: var(--radius);
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    .check-circle {
+      display: inline-block;
+      width: 1.2rem;
+      height: 1.2rem;
+      background-color: transparent;
+      border-radius: 50%;
+      border: 1px solid var(--LightGrayishBlue);
+    }
+    input {
+      border: none;
+      height: max-content;
+      width: 100%;
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+}
