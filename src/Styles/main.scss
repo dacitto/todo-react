@@ -3,8 +3,11 @@
   // Colors
   // Primary
   --BrightBlue: hsl(220, 98%, 61%);
-  --CheckBackground: linear-gradient(hsl(192, 100%, 67%), hsl(280, 87%, 65%));
-
+  --CheckBackground: linear-gradient(
+    0deg,
+    hsl(192, 100%, 67%) 0%,
+    hsl(280, 87%, 65%) 100%
+  );
   //Light Theme
 
   --VeryLightGray: hsl(0, 0%, 98%);
@@ -40,6 +43,6 @@ body {
 }
 .container {
   width: 90%;
-  max-width: 750px;
+  max-width: 600px;
   margin: 0 auto;
 }
