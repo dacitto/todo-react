@@ -16,7 +16,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    &.active {
+    &.checked {
       background-image: var(--CheckBackground);
       // background: var(--CheckBackground);
       background-position: center;
@@ -29,8 +29,8 @@
     width: 1rem;
   }
   .text {
-    width: 90%;
-    &.active {
+    width: max-content;
+    &.checked {
       text-decoration: line-through;
       color: var(--LightGrayishBlue);
     }
