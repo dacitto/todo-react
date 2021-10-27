@@ -6,12 +6,18 @@ const List = ({tasks,setTasks}) => {
     console.log('id  ' + id)
     setTasks(tasks.filter(task => task.id!==id))
   }
+  const CompleteTask = (id)=> {
+    const newTasks = tasks.map(task => {task.completed= task.id===id?!task.completed:task.completed;
+    return task});
+    setTasks(newTasks);
+  }
+
   console.log(tasks);
   return (
     <>
     <div className="list">
       {tasks.map(task=>(
-        <Task completed={task.completed} key={task.id} task={task} RemoveTask={RemoveTask}></Task>
+        <Task completed={task.completed} key={task.id} task={task} RemoveTask={RemoveTask} CompleteTask={CompleteTask}></Task>
       ))}
     </div>
     {

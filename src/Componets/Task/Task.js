@@ -1,11 +1,11 @@
 import React from "react";
 import "./Task.scss";
 import checkedIcon from "../../images/icon-check.svg";
-const Task = ({ completed,task,RemoveTask }) => {
+const Task = ({ completed,task,RemoveTask,CompleteTask }) => {
   const checkedClass = completed ? "checked" : "" ;
   return (
     <div className="task">
-      <span className={"check-circle " + checkedClass}>
+      <span className={"check-circle " + checkedClass} onClick={()=>CompleteTask(task.id)}>
         {completed && <img src={checkedIcon} alt=""></img>}
       </span>
       <span className={"text " + checkedClass}>{task.task}</span>
