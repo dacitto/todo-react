@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./List.scss";
 import Task from "../Task/Task";
 import { BiTask } from "react-icons/bi";
+import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 
 const List = ({ tasks, setTasks }) => {
   const [active, setActive] = useState("all");
@@ -21,7 +22,13 @@ const List = ({ tasks, setTasks }) => {
     });
     setTasks(newTasks);
   };
-
+  function handleOnDragEnd(result) {
+    if (!result.destination) return;
+    const items = Array.from(tasks);
+    const [reorderedItem] = items.splice(result.source.index, 1);
+    items.splice(result.destination.index, 0, reorderedItem);
+    setTasks(items);
+  }
   return (
     <>
       {(tasks.length === 0 || filt().length === 0) && (
@@ -33,17 +40,41 @@ const List = ({ tasks, setTasks }) => {
         </div>
       )}
       {tasks.length > 0 && filt().length > 0 && (
-        <div className="list">
-          {filt().map((task) => (
-            <Task
-              completed={task.completed}
-              key={task.id}
-              task={task}
-              RemoveTask={RemoveTask}
-              CompleteTask={CompleteTask}
-            ></Task>
-          ))}
-        </div>
+        <DragDropContext onDragEnd={handleOnDragEnd}>
+          <Droppable droppableId="tasks">
+            {(provided) => (
+              <div
+                className="list"
+                {...provided.droppableProps}
+                ref={provided.innerRef}
+              >
+                {filt().map((task, index) => (
+                  <Draggable
+                    key={task.id}
+                    draggableId={task.id.toString()}
+                    index={index}
+                  >
+                    {(provided) => (
+                      <div
+                        ref={provided.innerRef}
+                        {...provided.draggableProps}
+                        {...provided.dragHandleProps}
+                      >
+                        <Task
+                          completed={task.completed}
+                          task={task}
+                          RemoveTask={RemoveTask}
+                          CompleteTask={CompleteTask}
+                        ></Task>
+                      </div>
+                    )}
+                  </Draggable>
+                ))}
+                {provided.placeholder}
+              </div>
+            )}
+          </Droppable>
+        </DragDropContext>
       )}
       {tasks.length > 0 && (
         <div className="filter">
