@@ -1,13 +1,31 @@
-.list {
+.list-conainer {
+  border-radius: var(--radius);
   background-color: var(--VeryLightGray);
   margin-top: -3rem;
-  border-radius: var(--radius);
-  overflow-y: hidden;
   box-shadow: var(--box-shadow);
-  min-height: var(--min-list-hight);
+  overflow: hidden;
+  height: var(--min-list-height);
+  position: relative;
+  .list {
+    height: calc(100% - 58px);
+    overflow-y: auto;
+  }
+  .control {
+    background-color: var(--VeryLightGray);
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    padding: 1rem;
+    color: var(--DarkGrayishBlue);
+    justify-content: space-between;
+    .clear:hover {
+      cursor: pointer;
+    }
+  }
 }
 .empty-list {
-  min-height: var(--min-list-hight);
+  min-height: var(--min-list-height);
   display: flex;
   align-items: center;
   justify-content: center;

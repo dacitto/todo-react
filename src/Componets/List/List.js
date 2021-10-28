@@ -43,39 +43,58 @@ const List = ({ tasks, setTasks }) => {
         <DragDropContext onDragEnd={handleOnDragEnd}>
           <Droppable droppableId="tasks">
             {(provided) => (
-              <div
-                className="list"
-                {...provided.droppableProps}
-                ref={provided.innerRef}
-              >
-                {filt().map((task, index) => (
-                  <Draggable
-                    key={task.id}
-                    draggableId={task.id.toString()}
-                    index={index}
+              <div className="list-conainer">
+                <div
+                  className="list"
+                  {...provided.droppableProps}
+                  ref={provided.innerRef}
+                >
+                  {filt().map((task, index) => (
+                    <Draggable
+                      key={task.id}
+                      draggableId={task.id.toString()}
+                      index={index}
+                    >
+                      {(provided) => (
+                        <div
+                          ref={provided.innerRef}
+                          {...provided.draggableProps}
+                          {...provided.dragHandleProps}
+                        >
+                          <Task
+                            completed={task.completed}
+                            task={task}
+                            RemoveTask={RemoveTask}
+                            CompleteTask={CompleteTask}
+                          ></Task>
+                        </div>
+                      )}
+                    </Draggable>
+                  ))}
+                  {provided.placeholder}
+                </div>
+                <div className="control">
+                  <div>
+                    {tasks.filter((task) => task.completed === false).length}{" "}
+                    items left
+                  </div>
+                  <div
+                    className="clear"
+                    onClick={() => {
+                      setTasks(
+                        tasks.filter((task) => task.completed === false)
+                      );
+                    }}
                   >
-                    {(provided) => (
-                      <div
-                        ref={provided.innerRef}
-                        {...provided.draggableProps}
-                        {...provided.dragHandleProps}
-                      >
-                        <Task
-                          completed={task.completed}
-                          task={task}
-                          RemoveTask={RemoveTask}
-                          CompleteTask={CompleteTask}
-                        ></Task>
-                      </div>
-                    )}
-                  </Draggable>
-                ))}
-                {provided.placeholder}
+                    Clear Completed
+                  </div>
+                </div>
               </div>
             )}
           </Droppable>
         </DragDropContext>
       )}
+
       {tasks.length > 0 && (
         <div className="filter">
           <ul>
