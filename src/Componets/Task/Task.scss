@@ -10,6 +10,8 @@
   .check-circle {
     width: 1.2rem;
     height: 1.2rem;
+    flex-grow: 0; /* do not grow   - initial value: 0 */
+    flex-shrink: 0; /* do not shrink - initial value: 1 */
     background-color: transparent;
     border-radius: 50%;
     border: 1px solid var(--LightGrayishBlue);
