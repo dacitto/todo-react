@@ -12,7 +12,7 @@ const Header = ({tasks,setTasks}) => {
       e.target.value="";
     }
   }
-
+ 
   return (
     <header className="header">
       <div className="container">
