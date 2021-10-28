@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./List.scss";
 import Task from "../Task/Task";
+import { BiTask } from "react-icons/bi";
 
 const List = ({ tasks, setTasks }) => {
   const [active, setActive] = useState("all");
@@ -23,17 +24,27 @@ const List = ({ tasks, setTasks }) => {
 
   return (
     <>
-      <div className="list">
-        {filt().map((task) => (
-          <Task
-            completed={task.completed}
-            key={task.id}
-            task={task}
-            RemoveTask={RemoveTask}
-            CompleteTask={CompleteTask}
-          ></Task>
-        ))}
-      </div>
+      {(tasks.length === 0 || filt().length === 0) && (
+        <div className="empty-list">
+          <div className="icon-container">
+            <BiTask className="icon"></BiTask>
+          </div>
+          <h2 className="text">No Tasks here</h2>
+        </div>
+      )}
+      {tasks.length > 0 && filt().length > 0 && (
+        <div className="list">
+          {filt().map((task) => (
+            <Task
+              completed={task.completed}
+              key={task.id}
+              task={task}
+              RemoveTask={RemoveTask}
+              CompleteTask={CompleteTask}
+            ></Task>
+          ))}
+        </div>
+      )}
       {tasks.length > 0 && (
         <div className="filter">
           <ul>
