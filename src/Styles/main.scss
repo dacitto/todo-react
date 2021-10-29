@@ -25,7 +25,7 @@
   --VeryDarkGrayishBlue: hsl(233, 14%, 35%);
   --VeryDarkGrayishBlue: hsl(237, 14%, 26%);
 
-  --radius: 0.5rem;
+  --radius: 0.3rem;
   --box-shadow: 0 0 2rem 1rem #22222211, 0 0 0.5rem 0rem #22222233;
   --min-list-height: 25rem;
 }
@@ -47,4 +47,24 @@ body {
   width: 90%;
   max-width: 450px;
   margin: 0 auto;
+}
+/* width */
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: var(--CheckBackground);
+  border-radius: 1rem;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #888;
 }

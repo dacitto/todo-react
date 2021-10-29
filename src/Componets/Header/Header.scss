@@ -28,6 +28,8 @@
     align-items: center;
     gap: 0.6rem;
     .check-circle {
+      flex-grow: 0;
+      flex-shrink: 0;
       display: inline-block;
       width: 1.2rem;
       height: 1.2rem;

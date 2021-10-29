@@ -8,7 +8,10 @@ const List = ({ tasks, setTasks }) => {
   const [active, setActive] = useState("all");
   const filt = () => {
     return active === "all"
-      ? tasks
+      ? /*[
+          ...tasks.filter((task) => task.completed === false),
+          ...tasks.filter((task) => task.completed === true),
+        ]*/ tasks
       : tasks.filter((task) => task.completed === active);
   };
 
@@ -20,15 +23,19 @@ const List = ({ tasks, setTasks }) => {
       task.completed = task.id === id ? !task.completed : task.completed;
       return task;
     });
-    setTasks(newTasks);
+    setTasks([
+      ...newTasks.filter((task) => task.completed === false),
+      ...newTasks.filter((task) => task.completed),
+    ]);
   };
-  function handleOnDragEnd(result) {
+  const handleOnDragEnd = (result) => {
     if (!result.destination) return;
     const items = Array.from(tasks);
     const [reorderedItem] = items.splice(result.source.index, 1);
     items.splice(result.destination.index, 0, reorderedItem);
     setTasks(items);
-  }
+  };
+  const droppableId = "tasks";
   return (
     <>
       {(tasks.length === 0 || filt().length === 0) && (
@@ -39,9 +46,10 @@ const List = ({ tasks, setTasks }) => {
           <h2 className="text">No Tasks here</h2>
         </div>
       )}
+
       {tasks.length > 0 && filt().length > 0 && (
         <DragDropContext onDragEnd={handleOnDragEnd}>
-          <Droppable droppableId="tasks">
+          <Droppable droppableId={droppableId}>
             {(provided) => (
               <div className="list-conainer">
                 <div
@@ -49,29 +57,39 @@ const List = ({ tasks, setTasks }) => {
                   {...provided.droppableProps}
                   ref={provided.innerRef}
                 >
-                  {filt().map((task, index) => (
-                    <Draggable
-                      key={task.id}
-                      draggableId={task.id.toString()}
-                      index={index}
-                    >
-                      {(provided) => (
-                        <div
-                          ref={provided.innerRef}
-                          {...provided.draggableProps}
-                          {...provided.dragHandleProps}
-                        >
-                          <Task
-                            completed={task.completed}
-                            task={task}
-                            RemoveTask={RemoveTask}
-                            CompleteTask={CompleteTask}
-                          ></Task>
-                        </div>
-                      )}
-                    </Draggable>
-                  ))}
+                  {filt().length === tasks.length &&
+                    filt().map((task, index) => (
+                      <Draggable
+                        key={task.id}
+                        draggableId={task.id.toString()}
+                        index={index}
+                      >
+                        {(provided) => (
+                          <div
+                            ref={provided.innerRef}
+                            {...provided.draggableProps}
+                            {...provided.dragHandleProps}
+                          >
+                            <Task
+                              completed={task.completed}
+                              task={task}
+                              RemoveTask={RemoveTask}
+                              CompleteTask={CompleteTask}
+                            ></Task>
+                          </div>
+                        )}
+                      </Draggable>
+                    ))}
                   {provided.placeholder}
+                  {filt().length !== tasks.length &&
+                    filt().map((task) => (
+                      <Task
+                        completed={task.completed}
+                        task={task}
+                        RemoveTask={RemoveTask}
+                        CompleteTask={CompleteTask}
+                      ></Task>
+                    ))}
                 </div>
                 <div className="control">
                   <div>

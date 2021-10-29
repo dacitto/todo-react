@@ -1,18 +1,24 @@
 import React from "react";
 import "../../Styles/main.scss";
 import "./Header.scss";
-const Header = ({tasks,setTasks}) => {
-  const randomKey  = (Math.random()).toString(36).substring(2);
+const Header = ({ tasks, setTasks }) => {
+  const randomKey = Math.random().toString(36).substring(2);
   //console.log(randomKey);
-  const addTask = (e)=> {
-    if((e.code==="NumpadEnter"||e.code==="Enter")&&e.target.value!==''){
-      setTasks([...tasks,{task:e.target.value
-        ,id:randomKey,
-        completed:false}])
-      e.target.value="";
+  const addTask = (e) => {
+    if (
+      (e.code === "NumpadEnter" || e.code === "Enter") &&
+      e.target.value !== ""
+    ) {
+      setTasks([
+        { task: e.target.value, id: randomKey, completed: false },
+        ...tasks.filter((task) => task.completed === false),
+        ...tasks.filter((task) => task.completed === true),
+        //...tasks,
+      ]);
+      e.target.value = "";
     }
-  }
- 
+  };
+
   return (
     <header className="header">
       <div className="container">
