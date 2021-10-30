@@ -43,6 +43,9 @@ body {
     font-family: "Josefin Sans", sans-serif;
   }
 }
+body.dark {
+  background-color: var(--VeryDarkBlue);
+}
 .container {
   width: 90%;
   max-width: 650px;

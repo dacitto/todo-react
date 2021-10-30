@@ -1,6 +1,6 @@
 .header {
   min-height: 18rem;
-  background: url("../../images/bg-desktop-light.jpg");
+  background-image: url("../../images/bg-desktop-light.jpg");
   background-position: top;
   background-size: cover;
   background-repeat: no-repeat;
@@ -41,9 +41,33 @@
       border: none;
       height: max-content;
       width: 100%;
+      background-color: transparent;
       &:focus {
         outline: none;
       }
+    }
+  }
+}
+
+.dark .header {
+  background-image: url("../../images/bg-desktop-dark.jpg");
+  background-color: #222;
+  color: var(--DarkGrayishBlue);
+  .todo {
+    .todo-text {
+      color: white;
+    }
+  }
+  .create {
+    background-color: var(--VeryDarkDesaturatedBlue);
+    input {
+      color: var(--LightGrayishBlue--hover);
+      &:focus {
+        outline: none;
+      }
+    }
+    .check-circle {
+      border: 1px solid var(--VeryDarkGrayishBlue);
     }
   }
 }

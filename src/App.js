@@ -8,13 +8,20 @@ function App() {
     { id: 3, task: "go to sleep", completed: true },
     { id: 4, task: "useless task", completed: true },
   ]);
+  const [isDark, setIsDark] = useState(true);
+  document.body.classList = isDark ? "dark" : "";
   return (
-    <>
-      <Header tasks={tasks} setTasks={setTasks}></Header>
+    <div className={isDark && "dark"}>
+      <Header
+        tasks={tasks}
+        setTasks={setTasks}
+        isDark={isDark}
+        setIsDark={setIsDark}
+      ></Header>
       <div className="container">
         <List tasks={tasks} setTasks={setTasks}></List>
       </div>
-    </>
+    </div>
   );
 }
 

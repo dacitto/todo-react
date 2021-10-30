@@ -23,10 +23,8 @@
     }
     &.checked {
       background-image: var(--CheckBackground);
-      // background: var(--CheckBackground);
       background-position: center;
       background-repeat: no-repeat;
-      //background-color: #222;
     }
   }
   .close {
@@ -54,6 +52,26 @@
       &::after {
         transition: 0.5s all ease-in-out;
         width: 100%;
+      }
+    }
+  }
+}
+
+.dark {
+  .task {
+    background-color: var(--VeryDarkDesaturatedBlue);
+    color: var(--LightGrayishBlue);
+    border-bottom: 1px solid var(--VeryDarkGrayishBlue);
+    .check-circle {
+      border: 1px solid var(--VeryDarkGrayishBlue);
+    }
+
+    .text {
+      &::after {
+        border-bottom: 1px solid var(--LightGrayishBlue);
+      }
+      &.checked {
+        color: var(--DarkGrayishBlue);
       }
     }
   }
