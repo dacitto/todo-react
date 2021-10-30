@@ -38,10 +38,23 @@
     }
   }
   .text {
+    transition: 0.5s all ease-in-out;
     width: max-content;
+    &::after {
+      transition: 0.5s all ease-in-out;
+      display: block;
+      content: "";
+      width: 0%;
+      height: 0;
+      border-bottom: 1px solid var(--LightGrayishBlue);
+      transform: translateY(-0.5rem);
+    }
     &.checked {
-      text-decoration: line-through;
       color: var(--LightGrayishBlue);
+      &::after {
+        transition: 0.5s all ease-in-out;
+        width: 100%;
+      }
     }
   }
 }
