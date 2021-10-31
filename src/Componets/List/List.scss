@@ -5,7 +5,8 @@
   box-shadow: var(--box-shadow);
   overflow: hidden;
   height: var(--min-list-height);
-
+  transition: var(--transition);
+  transition: none;
   * {
     transition: none;
   }
@@ -13,6 +14,7 @@
     transition: none;
     height: calc(100% - 58px);
     overflow-y: auto;
+    transition: var(--transition);
   }
 }
 .empty-list {
@@ -89,7 +91,7 @@
 }
 
 .mobile-only {
-  transition: 0.3s all ease-in-out;
+  transition: var(--transition);
   width: 100%;
   overflow: hidden;
   margin-left: auto;
@@ -97,7 +99,7 @@
   transform: translateY(0);
 }
 .desktop-only {
-  transition: 0.3s all ease-in-out;
+  transition: var(--transition);
   width: 0;
   height: 0;
   padding: 0;

@@ -28,6 +28,7 @@
   --radius: 0.3rem;
   --box-shadow: 0 0 2rem 1rem #22222211, 0 0 0.5rem 0rem #22222233;
   --min-list-height: 25rem;
+  --transition: 1s all ease-in-out;
 }
 *,
 *::after,
@@ -35,7 +36,7 @@
   box-sizing: border-box;
   padding: 0;
   margin: 0;
-  transition: 1s all ease-in-out;
+  transition: var(--transition);
 }
 body {
   font-size: 17px;
@@ -72,4 +73,13 @@ body.dark {
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: #888;
+}
+.dark ::-webkit-scrollbar-track {
+  background: var(--VeryDarkDesaturatedBlue);
+}
+
+.drag {
+  text-align: center;
+  font-size: 1.3rem;
+  color: var(--DarkGrayishBlue);
 }

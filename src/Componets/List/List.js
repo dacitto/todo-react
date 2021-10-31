@@ -38,55 +38,54 @@ const List = ({ tasks, setTasks }) => {
   const droppableId = "tasks";
   return (
     <>
-      {tasks.length === 0 ||
-        (filt().length === 0 && (
-          <div className="empty-list">
-            <div className="icon-container">
-              <BiTask className="icon"></BiTask>
-            </div>
-            <h2 className="text">No Tasks here</h2>
-            {tasks.length > 0 && (
-              <div className="control">
-                <div>
-                  {tasks.filter((task) => task.completed === false).length}{" "}
-                  items left
-                </div>
-                {tasks.length > 0 && (
-                  <div className="filter desktop-only">
-                    <ul>
-                      <li
-                        className={active === "all" ? "active" : null}
-                        onClick={() => setActive("all")}
-                      >
-                        All
-                      </li>
-                      <li
-                        className={active === false ? "active" : null}
-                        onClick={() => setActive(false)}
-                      >
-                        Active
-                      </li>
-                      <li
-                        className={active === true ? "active" : null}
-                        onClick={() => setActive(true)}
-                      >
-                        Completed
-                      </li>
-                    </ul>
-                  </div>
-                )}
-                <div
-                  className="clear"
-                  onClick={() => {
-                    setTasks(tasks.filter((task) => task.completed === false));
-                  }}
-                >
-                  Clear Completed
-                </div>
-              </div>
-            )}
+      {filt().length === 0 && (
+        <div className="empty-list">
+          <div className="icon-container">
+            <BiTask className="icon"></BiTask>
           </div>
-        ))}
+          <h2 className="text">No Tasks here</h2>
+          {tasks.length > 0 && (
+            <div className="control">
+              <div>
+                {tasks.filter((task) => task.completed === false).length} items
+                left
+              </div>
+              {tasks.length > 0 && (
+                <div className="filter desktop-only">
+                  <ul>
+                    <li
+                      className={active === "all" ? "active" : null}
+                      onClick={() => setActive("all")}
+                    >
+                      All
+                    </li>
+                    <li
+                      className={active === false ? "active" : null}
+                      onClick={() => setActive(false)}
+                    >
+                      Active
+                    </li>
+                    <li
+                      className={active === true ? "active" : null}
+                      onClick={() => setActive(true)}
+                    >
+                      Completed
+                    </li>
+                  </ul>
+                </div>
+              )}
+              <div
+                className="clear"
+                onClick={() => {
+                  setTasks(tasks.filter((task) => task.completed === false));
+                }}
+              >
+                Clear Completed
+              </div>
+            </div>
+          )}
+        </div>
+      )}
 
       {tasks.length > 0 && filt().length > 0 && (
         <DragDropContext onDragEnd={handleOnDragEnd}>
