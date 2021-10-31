@@ -5,24 +5,14 @@
   box-shadow: var(--box-shadow);
   overflow: hidden;
   height: var(--min-list-height);
-  position: relative;
+
+  * {
+    transition: none;
+  }
   .list {
+    transition: none;
     height: calc(100% - 58px);
     overflow-y: auto;
-  }
-  .control {
-    background-color: var(--VeryLightGray);
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    display: flex;
-    padding: 1rem;
-    color: var(--DarkGrayishBlue);
-    justify-content: space-between;
-    align-items: center;
-    .clear:hover {
-      cursor: pointer;
-    }
   }
 }
 .empty-list {
@@ -36,7 +26,7 @@
   border-radius: var(--radius);
   overflow-y: hidden;
   box-shadow: var(--box-shadow);
-  gap: 2rem;
+  gap: 1.5rem;
   .text {
     color: var(--DarkGrayishBlue);
   }
@@ -52,6 +42,24 @@
     .icon {
       color: var(--VeryLightGray);
       font-size: 4rem;
+    }
+  }
+}
+.list-conainer,
+.empty-list {
+  position: relative;
+  .control {
+    background-color: var(--VeryLightGray);
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    padding: 1rem;
+    color: var(--DarkGrayishBlue);
+    justify-content: space-between;
+    align-items: center;
+    .clear:hover {
+      cursor: pointer;
     }
   }
 }
@@ -101,6 +109,9 @@
 .dark {
   .list-conainer {
     background-color: var(--VeryDarkDesaturatedBlue);
+  }
+  .list-conainer,
+  .empty-list {
     .control {
       background-color: var(--VeryDarkDesaturatedBlue);
       color: var(--DarkGrayishBlue);
@@ -148,7 +159,8 @@
     margin: 0;
     transform: translateY(0);
   }
-  .list-conainer {
+  .list-conainer,
+  .empty-list {
     .control {
       padding: 0 1rem;
     }

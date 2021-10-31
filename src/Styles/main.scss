@@ -35,6 +35,7 @@
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+  transition: 1s all ease-in-out;
 }
 body {
   font-size: 17px;
@@ -46,6 +47,7 @@ body {
 body.dark {
   background-color: var(--VeryDarkBlue);
 }
+
 .container {
   width: 90%;
   max-width: 650px;
