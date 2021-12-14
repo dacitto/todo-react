@@ -52,7 +52,24 @@ const Header = ({ tasks, setTasks, setIsDark, isDark }) => {
         </div>
         <div className="create">
           <span className="check-circle"></span>
-          <input placeholder="Create a new todo..." onKeyUp={addTask}></input>
+          <input
+            placeholder="Create a new todo..."
+            onKeyUp={addTask}
+            onBlur={(e) => {
+              e.code = "Enter";
+              addTask(e);
+            }}
+          ></input>
+          <span
+            className="add-task-icon"
+            onClick={() => {
+              // element.dispatchEvent(
+              new KeyboardEvent("keydown", { key: "Enter" });
+              // );
+            }}
+          >
+            +
+          </span>
         </div>
       </div>
     </header>

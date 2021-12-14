@@ -37,6 +37,29 @@
       border-radius: 50%;
       border: 1px solid var(--LightGrayishBlue);
     }
+    .add-task-icon {
+      border-radius: 50%;
+      border: 1px solid var(--VeryDarkGrayishBlue);
+      font-size: 1rem;
+      transform: scale(1.2);
+      flex-grow: 0;
+      flex-shrink: 0;
+      width: 1.2rem;
+      height: 1.2rem;
+      color: var(--VeryDarkGrayishBlue);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: 0.3s all ease-in-out;
+      &:hover {
+        transform: scale(1.6);
+        cursor: pointer;
+        background-color: var(--LightGrayishBlue--hover);
+        border-color: var(--LightGrayishBlue--hover);
+        color: var(--VeryDarkGrayishBlue);
+        transition: 0.3s all ease-in-out;
+      }
+    }
     input {
       border: none;
       height: max-content;
@@ -68,6 +91,13 @@
     }
     .check-circle {
       border: 1px solid var(--VeryDarkGrayishBlue);
+    }
+    .add-task-icon {
+      color: #eee;
+      border-color: #eee;
+      &:hover {
+        color: var(--VeryDarkDesaturatedBlue);
+      }
     }
   }
 }
