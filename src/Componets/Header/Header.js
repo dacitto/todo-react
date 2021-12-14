@@ -7,8 +7,9 @@ const Header = ({ tasks, setTasks, setIsDark, isDark }) => {
   const addTask = (e) => {
     if (
       (e.code === "NumpadEnter" || e.code === "Enter") &&
-      e.target.value !== ""
+      e.target.value.trim() !== ""
     ) {
+      console.log(e.target.value.trim());
       setTasks([
         { task: e.target.value, id: randomKey, completed: false },
         ...tasks.filter((task) => task.completed === false),
